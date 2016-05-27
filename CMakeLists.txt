@@ -410,6 +410,9 @@ if (WIN32)
 endif ()
 
 if (MSVC)
+  # VC2015 warning for missing /EHsc
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")	
+  
   # Parallel make.
   set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
 
