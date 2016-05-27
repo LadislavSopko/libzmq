@@ -201,8 +201,10 @@ option(LIBZMQ_PEDANTIC "" ON)
 option(LIBZMQ_WERROR "" OFF)
 
 if(LIBZMQ_PEDANTIC)
-  zmq_check_cxx_flag_prepend("-pedantic")
-
+  if(NOT MSVC) 	
+	zmq_check_cxx_flag_prepend("-pedantic")
+  endif()	
+  
   if(${CMAKE_CXX_COMPILER_ID} MATCHES "Intel")
     zmq_check_cxx_flag_prepend("-strict-ansi")
   endif()
